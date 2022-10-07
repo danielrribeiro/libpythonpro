@@ -7,15 +7,15 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.10
+      - name: Set up Python 3.10.7
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10
-      - name: Instalar dependências
+          python-version: 3.10.7
+      - name: Instalar Dependências
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-dev.txt
-      - name: Rodar flake8
+          pip install -q -r requirements-dev.txt flake8 codecov
+      - name: Rodar Flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names 
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics 
@@ -24,3 +24,9 @@ jobs:
       - name: Rodar Testes Automáticos com Pytest
         run: |
           pytest libpythonpro --cov=libpythonpro
+      - name: Cobertura de Testes com Codecov
+        uses: codecov/codecov-action@v2
+        with:
+         token: ${{secrets.CODECOV_TOKEN}}
+          
+          
