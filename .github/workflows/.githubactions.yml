@@ -1,20 +1,20 @@
 name: libpythonpro-CI
-
-on: [ push ]
-
+on: [push, pull_request]
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.10.7
+      - name: Configurar Python 3.10
         uses: actions/setup-python@v2
         with:
-          python-version: 3.10.7
+          python-version: '3.10'
       - name: Instalar Dependências
         run: |
           python -m pip install --upgrade pip
-          pip install -q -r requirements-dev.txt flake8 codecov
+          pip install flake8 pytest
+          pip install codecov
+          pip install -q -r requirements-dev.txt
       - name: Rodar Flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names 
@@ -23,10 +23,8 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Rodar Testes Automáticos com Pytest
         run: |
-          pytest libpythonpro --cov=libpythonpro
+          pytest --cov=libpythonpro
       - name: Cobertura de Testes com Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
-         token: ${{secrets.CODECOV_TOKEN}}
-          
-          
+          token: ${{secrets.CODECOV_TOKEN}}
