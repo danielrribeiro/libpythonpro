@@ -5,9 +5,9 @@ Nesse curso é ensinado como contribuir com projetos de código aberto
 
 Link do curso [Python Pro](https://pythonpro.com.br/)
 
-[![Build Status](https://app.travis-ci.com/danielrribeiro/libpythonpro.svg?branch=main)](https://app.travis-ci.com/danielrribeiro/libpythonpro)
 [![Updates](https://pyup.io/repos/github/danielrribeiro/libpythonpro/shield.svg)](https://pyup.io/repos/github/danielrribeiro/libpythonpro/)
 [![Python 3](https://pyup.io/repos/github/danielrribeiro/libpythonpro/python-3-shield.svg)](https://pyup.io/repos/github/danielrribeiro/libpythonpro/)
+[![codecov](https://codecov.io/gh/danielrribeiro/libpythonpro/branch/main/graph/badge.svg?token=CZQRJ86A80)](https://codecov.io/gh/danielrribeiro/libpythonpro)
 
 Suportada versão 3 de Python
 
